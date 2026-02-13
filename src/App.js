@@ -31,6 +31,14 @@ export default function App() {
         travel is a pretty cool thing to think about. Who knows what we'll
         discover next!
       </TextExpander>
+
+      <TextExpander buttonColor="green">
+        Space travel requires some seriously amazing technology and
+        collaboration between countries, private companies, and international
+        space organizations. And while it's not always easy (or cheap), the
+        results are out of this world. Think about the first time humans stepped
+        foot on the moon or when rovers were sent to roam around on Mars.
+      </TextExpander>
     </div>
   );
 }
@@ -52,17 +60,19 @@ function TextExpander({
   }
 
   const [isOpen, setIsOpen] = useState(expanded)
-  const [word, setWord] = useState(isOpen ? children : children.trim().split(/\s+/).splice(0, collapsedNumWords).join(" "))
+  // const [word, setWord] = useState(children.trim().split(/\s+/).splice(0, collapsedNumWords).join(" "))
 
-  function onShowText() {
-    setWord(isOpen ? children : children.trim().split(/\s+/).splice(0, collapsedNumWords).join(" "))
-  }
+  const word = isOpen ? children : children.trim().split(/\s+/).splice(0, collapsedNumWords).join(" ")
 
   return <div className={className}>
-    {word}{!isOpen && '...'}
+
+    {/* {(word) && (!isOpen && '...')} */}
+
+    {word}{!isOpen ? '... ' : ' '}
 
     <button style={buttonStyle} onClick={() => setIsOpen(prev => !prev)}>
-      {!isOpen ? expandButtonText : collapseButtonText}
+      {isOpen ? collapseButtonText : expandButtonText}
     </button>
+
   </div>;
 }
