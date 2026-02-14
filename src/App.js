@@ -32,7 +32,7 @@ export default function App() {
         discover next!
       </TextExpander>
 
-      <TextExpander buttonColor="green">
+      <TextExpander buttonColor="green" expandButtonText="open am bros" collapseButtonText="oya close am ode" expanded={true}>
         Space travel requires some seriously amazing technology and
         collaboration between countries, private companies, and international
         space organizations. And while it's not always easy (or cheap), the
@@ -56,7 +56,7 @@ function TextExpander({
   const buttonStyle = {
     background: 'none',
     border: 'none',
-    color: `${buttonColor}`
+    color: `${buttonColor}`,
   }
 
   const [isOpen, setIsOpen] = useState(expanded)
